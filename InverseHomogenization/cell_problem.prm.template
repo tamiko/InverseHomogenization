@@ -1,0 +1,30 @@
+# Listing of Parameters
+# ---------------------
+subsection algorithm setup
+  set geometry radius      = 0.3
+  set geometry refinements = 5
+
+  # Valid options are: 'GD', 'BFGS', 'dBFGS'
+  set solver type          = GD
+  # Valid options are: 'forward', 'check', 'solve'
+  set solver cases         = solve
+
+  set solver niter         = 3
+
+  set iterations           = 100,   100,   500
+  set inverse scale        = 1.e-1, 1.e-3, 1.e-4
+
+  set alpha                = 1.e-1, 1.e-3, 1.e-4
+  set beta 1               = 1.e-1, 1.e-1, 1.e-1
+  set beta 2               = 1.e-1, 1.e-1, 1.e-1
+end
+
+
+subsection material parameters
+  set epsilon = 1,0 ; 0,0 | 0,0 ; 1,0
+  set tau     = 243, 0
+
+  set target epsilon = 0.4, 0.001; 0.1, 0| 0.1, 0; 0.8, 0.002
+
+  set omega   = 0.5
+end

@@ -1,0 +1,10 @@
+CMakeCache.txt
+CMakeFiles/
+Results*/
+InverseHomogenization
+Makefile
+cmake_install.cmake
+compile_commands.json
+*.prm
+output.*
+*.log

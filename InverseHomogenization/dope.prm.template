@@ -1,0 +1,99 @@
+# Listing of Parameters
+# ---------------------
+#Setup for the Newton-solver for the PDEs.
+subsection newtonsolver parameters
+  # maximal number of linesearch steps
+  set line_maxiter         = 4
+
+  # reduction rate for the linesearch damping parameter
+  set linesearch_rho       = 0.9
+
+  # minimal  newton reduction, if actual reduction is less, matrix is rebuild
+  set nonlinear_rho        = 0.1
+
+  set nonlinear_global_tol = 1.e-10
+  set nonlinear_maxiter    = 10
+  set nonlinear_tol        = 1.e-7
+end
+
+#subsection for the GMRES solver for the linear systems
+subsection gmres_withmatrix parameters
+  set linear_global_tol = 1.e-10
+  set linear_maxiter    = 1000
+  set no_tmp_vectors    = 100 
+end
+
+subsection output parameters
+  # File format for the output of control variables
+  set control_file_format     = .vtk
+
+  # Log Debug Information
+  set debug                   = false
+
+  # Correlation of the output and machine precision
+  set eps_machine_set_by_user = 0.0
+
+  # File format for the output of solution variables
+  set file_format             = .vtk
+
+  # Iteration Counters that should not reflect in the outputname, seperated by
+  # `;`
+  set ignore_iterations       = PDENewton;Cg
+
+  # Name of the logfile
+  set logfile                 = dope.log
+
+  # Do not write files whose name contains a substring given here by a list of
+  # `;` separated words
+  set never_write_list        = Residual;Hessian;Tangent;Adjoint;Intermediate;Update;Gradient
+
+  # Sets the precision of the output numbers
+  set number_precision        = 4
+
+  # Defines what strings should be printed, the higher the number the more
+  # output
+  set printlevel              = 10
+
+  # Directory where the output goes to
+  set results_dir             = Results/
+end
+
+
+#Parameters for the Optimization BFGS
+subsection reducedBFGSalgorithm parameters
+  set line_maxiter         = 30
+  set linesearch_gamma     = 0.1
+  set linesearch_eta       = 0.6
+  set nonlinear_global_tol = 1.e-11
+  set nonlinear_maxiter    = 100
+  set nonlinear_tol        = 1.e-7
+  #How many vectors should be stored? (Rank/2 of the approximate inverse hessian)
+  set memory               = 40
+  #The next parameter should probably be set to the Tikhonov parameter in the cost functional
+  set init_inverse_scale   = 1.e-1
+end
+
+#Parameters for the Optimization DampedBFGS
+subsection reducedDampedBFGSalgorithm parameters
+  set line_maxiter         = 10
+  set linesearch_gamma     = 0.1
+  set linesearch_beta       = 0.1
+  set nonlinear_global_tol = 1.e-11
+  set nonlinear_maxiter    = 100
+  set nonlinear_tol        = 1.e-3
+  #How many vectors should be stored? (Rank/2 of the approximate inverse hessian)
+  set memory               = 40
+  #The next parameter should probably be set to the Tikhonov parameter in the cost functional
+  set init_inverse_scale   = 1.e-1
+end
+
+
+#Parameters for the Optimization GradientDescent
+subsection reducedgradientdescentalgorithm parameters
+  set line_maxiter         = 10
+  set linesearch_c         = 0.1
+  set linesearch_rho       = 0.1
+  set nonlinear_global_tol = 1.e-11
+  set nonlinear_maxiter    = 100
+  set nonlinear_tol        = 1.e-7
+end

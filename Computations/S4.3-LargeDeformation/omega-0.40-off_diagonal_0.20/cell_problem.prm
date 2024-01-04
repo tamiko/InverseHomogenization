@@ -1,0 +1,27 @@
+subsection algorithm setup
+  set geometry radius      = 0.3
+  set geometry refinements = 5
+
+  set solver cases         = solve
+
+  set solver type          = dBFGS
+  set iterations           = 100, 5000
+
+  set solver niter         = 2
+  set alpha                =   0.001,  0.001
+  set interface penalty    =  10.00 , 10.00
+  set beta 1               =   0.80 ,  0.10
+  set beta 2               =   0.80 ,  0.10
+  set inverse scale        =   0.001,  0.001
+
+  set with complex part    = true
+end
+
+subsection material parameters
+  set epsilon        = 1, 0; 0, 0| 0, 0; 1, 0
+  set omega          = 0.400
+
+  set target epsilon = 0.5,0.01; 0.20,0 | 0.20,0; 0.5,0.01
+
+  set tau            = 243, 0
+end
